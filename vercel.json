@@ -1,49 +1,82 @@
 {
+  "redirects": [
+    {
+      "source": "/faq",
+      "destination": "/faq.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/voorwaarden",
+      "destination": "/voorwaarden.html",
+      "permanent": true
+    },
+    {
+      "source": "/lachgas-bestellen/:slug([a-z-]+)",
+      "destination": "/lachgas-bestellen/:slug.html",
+      "permanent": true
+    },
+    {
+      "source": "/lachgas-informatie/:slug([a-z0-9-]+)",
+      "destination": "/lachgas-informatie/:slug.html",
+      "permanent": true
+    },
+    {
+      "source": "/opengraph-image",
+      "destination": "/images/opengraph-image.png",
+      "permanent": true
+    },
+    {
+      "source": "/twitter-image",
+      "destination": "/images/twitter-image.png",
+      "permanent": true
+    },
+    {
+      "source": "/icon",
+      "destination": "/images/icon.png",
+      "permanent": true
+    },
+    {
+      "source": "/apple-icon",
+      "destination": "/images/apple-icon.png",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=63072000; includeSubDomains"
-        },
-        {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=(), payment=()"
         },
         {
           "key": "X-Frame-Options",
           "value": "DENY"
         },
         {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
           "key": "Content-Security-Policy",
-          "value": "frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/img/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=2592000, stale-while-revalidate=604800"
+          "value": "default-src 'self'; script-src 'self' 'sha256-PSlDg8dRMzi9mxb3lJBly2miCeGfg6WRGGVXdxnas8k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
         }
       ]
     },
@@ -57,16 +90,7 @@
       ]
     },
     {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=2592000, stale-while-revalidate=604800"
-        }
-      ]
-    },
-    {
-      "source": "/js/(.*)",
+      "source": "/(css|js)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -75,11 +99,11 @@
       ]
     },
     {
-      "source": "/sw.js",
+      "source": "/(.*)\\.html",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
